@@ -1,4 +1,4 @@
-# ImageSegmentationViaClustering
+# Image Segmentation Via Clustering
 Machine Learning Project 1
 
 ## Overview
