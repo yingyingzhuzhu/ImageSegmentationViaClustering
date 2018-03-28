@@ -14,3 +14,12 @@ Image segmentation refers to a class of algorithms that use unsupervised learnin
 • Spectral Clustering
 
 • Gaussian Mixture Models (GMM).
+
+
+## Evaluation Code. 
+
+You will write 2 functions that evaluate clustering algorithms called “EvalClustRGB” and “EvalClustHyper”. 
+
+EvalClustRGB that takes CCIm and a ground-truth segmentation as input and produces a score using the Martin index. 
+
+EvalClustHyper takes ClusterIm as an input.
