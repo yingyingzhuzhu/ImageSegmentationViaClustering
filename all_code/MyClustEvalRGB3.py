@@ -5,7 +5,6 @@
 
 
 # RGB
-from MyMartinIndex3 import MyMartinIndex3
+from all_code.MyMartinIndex3 import MyMartinIndex3
 def MyClustEvalRGB3(CCIm, groundTruthSeg):
     return MyMartinIndex3(CCIm,groundTruthSeg)
-

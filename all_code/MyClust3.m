@@ -69,5 +69,5 @@ for n = minCluIdx:maxCluIdx
     end
 end
 
-
+end
 

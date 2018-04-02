@@ -17,6 +17,6 @@ classes = vec2ind(y);
 
 ClusterIm = reshape(classes,m,n);
 
-figure;imagesc(ClusterIm),axis image,colorbar;
+% figure;imagesc(ClusterIm),axis image,colorbar;
 
 end
