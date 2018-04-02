@@ -10,15 +10,15 @@ if strcmp(algorithm, 'SOM')== 1
 end
 
 if strcmp(algorithm, 'Spectral')
-	[ClusterIm, CCIm] = MySpectral3()
+	[ClusterIm, CCIm] = MySpectral3(Im, type, clusts)
 end
 
 if strcmp(algorithm, 'GMM')
-	[ClusterIm, CCIm] = MyGMM3()
+	[ClusterIm, CCIm] = MyGMM3(Im, type, clusts)
 end
 
 if strcmp(algorithm, 'FCM')
-	[ClusterIm, CCIm] = MyFCM()
+	[ClusterIm, CCIm] = MyFCM3(Im, type, clusts)
 end
 
 end
