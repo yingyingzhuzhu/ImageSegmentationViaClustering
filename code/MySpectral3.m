@@ -1,4 +1,4 @@
-function [ClusterIm_Spectral,CCIm_Spectral] = MySpectral3(Im, Type, k)
+function ClusterIm_Spectral = MySpectral3(Im, k)
 
 % tic
 warning off
@@ -39,12 +39,6 @@ ClusterIm_Spectral = reshape(A,m_num,n_num);
 % 
 % CCIm_Spectral_temp = reshape(CCIm_Spectral_temp,m/num,n/num,k);
 
-switch Type
-    case ('RGB')
-        CCIm_Spectral = getCCIm(ClusterIm_Spectral);%CCIm_Spectral_temp;
-    case ('Hyper')
-        CCIm_Spectral = [];
-end
 % toc
 end
 
@@ -205,45 +199,4 @@ C = kmeans(U, k, 'start', 'cluster', ...
 % vectors as columns
 % C = sparse(1:size(D, 1), C, 1);
 
-end
-
-function CCIm = getCCIm(ClusterIm)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% INPUT: ClusterIm
-%%% OUTPUT: CCIm
-
-%%% NOTE: minCluIdx >= 0, or it will crash, MAR 27 730AM
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    minCluIdx = min(min(ClusterIm));
-    if( minCluIdx == 0)
-        ClusterIm = ClusterIm + 1;
-        minCluIdx = minCluIdx + 1;
-    end
-    CCIm = ClusterIm;
-    maxCluIdx = max(max(ClusterIm));
-    numClusters = maxCluIdx - minCluIdx + 1;
-    CC = cell(numClusters,1);
-    for n = minCluIdx:maxCluIdx
-        tempIm = ClusterIm;
-        tempIm(find(tempIm == n)) = -1;
-        tempIm(find(tempIm ~= -1)) = -2;
-        tempIm(find(tempIm == -1)) = 1;
-        tempIm(find(tempIm == -2)) = 0;
-        CC{n,1} = bwconncomp(tempIm);
-    end
-
-    ctr = numClusters;
-    for n = minCluIdx:maxCluIdx
-        temp = CC{n,1}.PixelIdxList;
-        if(size(temp,2)==1)
-            continue;
-        else
-            endIdx = size(temp,2);
-            for m = 2:endIdx
-                ctr = ctr + 1;
-                CCIm(temp{1,m}) = ctr;
-            end
-        end
-    end
-    
 end
