@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[169]:
+# In[1]:
 
 
 def getClusterAndPixelSet(seg):
@@ -18,7 +18,7 @@ def getClusterAndPixelSet(seg):
     return clusterAndPixelSet
 
 
-# In[170]:
+# In[2]:
 
 
 def getW(clusterAndPixelSet):
@@ -32,7 +32,7 @@ def getW(clusterAndPixelSet):
     return Wj
 
 
-# In[175]:
+# In[3]:
 
 
 def getPixelSum(Aj):
@@ -42,7 +42,7 @@ def getPixelSum(Aj):
     return sum
 
 
-# In[176]:
+# In[4]:
 
 
 def getWji(clusterAndPixelSet1, clusterAndPixelSet2):
@@ -60,11 +60,14 @@ def getWji(clusterAndPixelSet1, clusterAndPixelSet2):
             else:
                 Wji[j].append(0)
         for i in range(len(clusterAndPixelSet2)):
+            if sum_Bii == 0:
+                Wji[j][i] = 0
+            else:
                 Wji[j][i] = Wji[j][i] * 1.0 / sum_Bii
     return Wji
 
 
-# In[194]:
+# In[5]:
 
 
 def getPartialError(clusterAndPixelSet1, clusterAndPixelSet2, Wji, Wj):
@@ -79,7 +82,7 @@ def getPartialError(clusterAndPixelSet1, clusterAndPixelSet2, Wji, Wj):
     return E
 
 
-# In[201]:
+# In[6]:
 
 
 def MyMartinIndex3(seg1, seg2):
