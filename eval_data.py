@@ -3,18 +3,21 @@ import os
 import numpy
 from all_code.MyClustEvalRGB3 import MyClustEvalRGB3
 
-dir_list = os.listdir("./data/GMM")
+dir_list = os.listdir("./data/fcm")
 
 value = []
 
-# using clusterIm and gt, mean is 0.804 and stdv is 0.125
+# GMM clusterIm and gt, mean is 0.804 and stdv is 0.125
+# GMM CCIm and gt, mean is 0.812 and stdv is 0.125
+
+# fcm cluster mean is 0.862 and stdv is 0.095
 
 for file in dir_list:
-    tmp_data = io.loadmat("./data/GMM/" + file)
+    tmp_data = io.loadmat("./data/fcm/" + file)
     clusters = ["ClusterIm1", "ClusterIm2", "ClusterIm3"]
     ccims = ["CCIm1", "CCIm2", "CCIm3"]
     segs = ["Seg1", "Seg2", "Seg3"]
-    print("start to calculate")
+    print("start to calculate %s" % file)
     tmp_value = []
     for i in range(3):
         ccim = tmp_data[ccims[i]]
