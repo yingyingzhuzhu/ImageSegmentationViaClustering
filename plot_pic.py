@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import scipy.io as io
 
-data = io.loadmat("./data/GMM/GMM183.mat")
+data = io.loadmat("./data/fcm/fcm21.mat")
 origin = data["Im"]
 seg = data["Seg1"]
 ccim = data["CCIm1"]
